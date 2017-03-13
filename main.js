@@ -11,3 +11,23 @@ var config = {
     messagingSenderId: "51570292060"
 };
 firebase.initializeApp(config);
+
+
+var game = new gameConstructor();
+
+$(document).ready(function () {
+    click_handler();
+});
+
+
+function click_handler() {
+    $("#grid_board").on('click' , 'div' , function(){
+       game.engine($(this).attr("value"));
+    });
+}
+
+function gameConstructor() {
+    this.winningPattern = [];
+    this.engine = function (userPositionInput) {
+    }
+}
