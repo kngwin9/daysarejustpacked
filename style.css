@@ -51,11 +51,26 @@ body {
     width: 20vh;
     border: 1px solid;
     margin: auto;
+
+
+}
+
+#player1 {
+
 }
 
 #player2 {
 
+
+
 }
+
+.current_player {
+    text: "Your Turn!";
+    background-color: red;
+}
+
+
 
 #bottom_nav {
     background-color: lightblue;

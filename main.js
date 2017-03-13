@@ -12,7 +12,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
 var game = new gameConstructor();
 
 $(document).ready(function () {
@@ -26,8 +25,19 @@ function click_handler() {
     });
 }
 
+// Main game.
 function gameConstructor() {
     this.winningPattern = [];
     this.engine = function (userPositionInput) {
     }
 }
+
+// Grid template for color selector and player change.
+function gridTemplate(selected) {
+    var selected = this;
+
+}
+
+
+
+
