@@ -33,10 +33,13 @@ function gameConstructor() {
 }
 
 // Grid template for color selector and player change.
-function gridTemplate(selected) {
+var gridTemplate = function (selected) {
     var selected = this;
+    
+    this.cell_clicked = function () {
 
 }
+};
 
 
 
