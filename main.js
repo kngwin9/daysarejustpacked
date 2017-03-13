@@ -1,24 +1,32 @@
 /**
  * Created by kngwin9 on 3/13/17.
  */
-//this will be used to create cells, a component of the game board
-var cellTemplate = function(parent){
-
+// Firebase Config
+var config = {
+    apiKey: "AIzaSyBnHoatRyvoF6KJAgF2rI95MpCemMdO_CY",
+    authDomain: "tictactoe-b9ace.firebaseapp.com",
+    databaseURL: "https://tictactoe-b9ace.firebaseio.com",
+    storageBucket: "tictactoe-b9ace.appspot.com",
+    messagingSenderId: "51570292060"
 };
-//this will be used to create a game board of our choice in size, by calling on the cellTemp and creating as many divs as needed
-//will also need to call onto playerTemp to create players for this board
-var gameTemplate=function(mainElement,gameSize){
+firebase.initializeApp(config);
 
-};
-//this will create a 2 player dynamic, letting player 1 be X and player 2 be O's
-var playerTemplate = function(symbol, element){
 
-};
-//this calls the other functions and will make the new instance of game_Temp
+var game = new gameConstructor();
 
-var mainGame = null;
-$(document).ready(function){
-    mainGame = new gameTemplate($('#grid_board'));
-    mainGame.createCells(9);
-    mainGame.createPlayers();
+$(document).ready(function () {
+    click_handler();
+});
+
+
+function click_handler() {
+    $("#grid_board").on('click' , 'div' , function(){
+       game.engine($(this).attr("value"));
+    });
+}
+
+function gameConstructor() {
+    this.winningPattern = [];
+    this.engine = function (userPositionInput) {
+    }
 }
