@@ -1,0 +1,47 @@
+body {
+    height: 100vh;
+    width: 100vh;
+}
+
+#container {
+    background-color: lightgreen;
+    height: 90vh;
+    width: 60vh;
+}
+
+#grid_board {
+    height: 50vh;
+    width: 50vh;
+    background-color: lightblue;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid {
+    background-color: lightslategray;
+    height: 30%;
+    width: 30%;
+    border: 1px solid;
+    margin: auto;
+    box-sizing: border-box;
+
+}
+
+#player_info {
+    background-color: lightcoral;
+    height: 30vh;
+    width: 50vh;
+    display: flex;
+    margin: auto;
+}
+
+.players {
+    background-color: lightgoldenrodyellow;
+    height: 20vh;
+    width: 20vh;
+    border: 1px solid;
+    margin: auto;
+}
+
+#player2
