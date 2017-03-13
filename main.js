@@ -19,19 +19,14 @@ $(document).ready(function () {
 });
 function click_handler() {
     $("#grid_board").on('click' , 'div' , function(){
-        display.playerPiece(this, game.count % 2 === 0 ? game.playerTwo : game.playerOne);
+        game.createPlayers();
+        display.playerSymbol(this, game.counter % 2 === 0 ? "O" : "X");
         game.engine($(this).attr("value"));
-        game.createPlayers(2);
-       game.engine($(this).attr("value"));
-
     });
 }
 function playerFactory(symbol,playerTurn){
     this.symbol = symbol;
     this.playerTurn = playerTurn;
-    this.symbol = function(){                                 //returns the symbol for the particular player created
-        return this.symbol;
-    }
     this.activePlayer = function(){
         this.playerTurn.addClass('currentPlayer');
     };
@@ -41,18 +36,13 @@ function playerFactory(symbol,playerTurn){
 };
 
 function gameConstructor() {
+    this.winningPattern = [];
+    this.players = [];
+    this.counter = 1;
     this.engine = function (userPositionInput) {
-        this.board[userPositionInput] = game.gameCount % 2 === 0 ? game.playerTwo : game.playerOne;
-        this.count++;
-    }
-}
+    game.counter++;
+    };
 
-
-function displayConstructor() {
-    this.playerPiece = function (displayAddress, gameIcon) {
-        console.log("working");
-        $(displayAddress).text(gameIcon);
-    }
     this.createPlayers = function(){                          //will call on player factory
         var player1 =  new playerFactory('X',$('#player1'));
         var player2 = new playerFactory('O',$('#player2'));
@@ -62,3 +52,9 @@ function displayConstructor() {
     }
 }
 
+function displayConstructor() {
+    this.playerSymbol = function (location,symbol) {
+        console.log("working");
+        $(location).text(symbol);
+    }
+}
