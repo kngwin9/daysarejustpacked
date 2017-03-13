@@ -17,6 +17,7 @@ var display = new displayConstructor();
 
 $(document).ready(function () {
     click_handler();
+    $('#player1').addClass('current_player');
 });
 function click_handler() {
     console.log("Click Handler Works");
@@ -24,10 +25,9 @@ function click_handler() {
         game.createPlayers();
         display.playerSymbol(this, game.counter % 2 === 0 ? "O" : "X");
         game.engine($(this).attr("value"));
-        game.engine($(this).attr("value"));
         game.playerSwitch(); // Switches player on click, could move later to something else.
+        game.playerLock();
     });
-
 }
 function playerFactory(symbol,playerTurn){
     this.symbol = symbol;
@@ -42,21 +42,22 @@ function playerFactory(symbol,playerTurn){
         this.playerTurn.removeClass('current_player');
     };
 }
-
 function gameConstructor() {
     console.log("Game constructor works!");
-    this.winningPattern = [];
+    this.winningPattern = [
+        [0,1,2],
+        [0,4,8],
+        [0,3,6],
+        [1,4,7],
+        [2,4,6],
+        [2,5,8],
+        [3,4,5],
+        [6,7,8]
+    ];
     this.players = [];
     this.counter = 1;
     this.engine = function (userPositionInput) {
     game.counter++;
-    };
-
-    this.current_player = 0;
-    this.engine = function (userPositionInput) {
-    this.current_player = 0;
-    this.engine = function (userPositionInput) {
-
     };
     this.createPlayers = function(){                          //will call on player factory
         var player1 =  new playerFactory('X',$('#player1'));
@@ -79,28 +80,18 @@ function gameConstructor() {
             console.log("Current player is: " + this.current_player)
         }
     };
+    this.playerLock = function () { // Deactivates the non-current player, prevents other player from clicking on things
+        if(this.current_player) {
 
+        }
+        else {
+
+        }
+    }
 }
-
 function displayConstructor() {
     this.playerSymbol = function (location,symbol) {
         console.log("working");
         $(location).text(symbol);
     }
-
 }
-// Grid template for color selector and player change.
-var gridTemplate = function (selected) {
-    var selected = this;
-
-    this.cell_clicked = function () {
-
-
-// Grid template for color selector and player change.
-var gridTemplate = function (selected) {
-    var selected = this;
-
-    this.cell_clicked = function () {
-
-    }
-};
