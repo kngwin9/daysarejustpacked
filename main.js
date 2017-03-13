@@ -54,6 +54,9 @@ function gameConstructor() {
 
     this.current_player = 0;
     this.engine = function (userPositionInput) {
+    this.current_player = 0;
+    this.engine = function (userPositionInput) {
+
     };
     this.createPlayers = function(){                          //will call on player factory
         var player1 =  new playerFactory('X',$('#player1'));
@@ -76,6 +79,7 @@ function gameConstructor() {
             console.log("Current player is: " + this.current_player)
         }
     };
+
 }
 
 function displayConstructor() {
@@ -83,7 +87,15 @@ function displayConstructor() {
         console.log("working");
         $(location).text(symbol);
     }
+
 }
+// Grid template for color selector and player change.
+var gridTemplate = function (selected) {
+    var selected = this;
+
+    this.cell_clicked = function () {
+
+
 // Grid template for color selector and player change.
 var gridTemplate = function (selected) {
     var selected = this;
