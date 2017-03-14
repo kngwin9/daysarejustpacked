@@ -3,33 +3,43 @@ body {
     width: 110vh;
     display: flex;
     flex-wrap: wrap;
+    background-image: url("images/whitewood_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    opacity: 0.9;
 }
 
 #title {
     height: 5vh;
     width: 100vh;
     background-color: deepskyblue;
+    text-align: center;
+    margin: auto;
 }
 
 #container {
-    background-color: lightgreen;
-    height: 90vh;
+    background-color: lightcoral;
+    height: 60vh;
     width: 60vh;
+
 }
 
 #chat_box {
     background-color: lightgoldenrodyellow;
-    height: 90vh;
-    width: 40vh;
+    height: 30vh;
+    width: 80vh;
+    margin: auto;
 }
 
 #grid_board {
     height: 50vh;
     width: 50vh;
-    background-color: lightblue;
+    background-color: black;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 7%;
 }
 
 .grid {
@@ -57,11 +67,11 @@ body {
     width: 20vh;
     border: 1px solid;
     margin: auto;
-
-
+    border-radius: 100px;
 }
 
 #player1 {
+
 
 }
 
@@ -72,16 +82,15 @@ body {
 }
 
 .current_player {
-    text: "Your Turn!";
     background-color: red;
 }
 
-
-
 #bottom_nav {
     background-color: lightblue;
-    width: 100vh;
-    height: 10vh;
+    width: 50vh;
+    height: 5vh;
+    margin: auto;
+    text-align: center;
 }
 
 .nav {
@@ -89,5 +98,7 @@ body {
     display: inline-block;
     height: 5vh;
     width: 10vh;
+    text-align: center;
+
 
 }
