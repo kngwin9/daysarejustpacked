@@ -1,90 +1,125 @@
-var config = {
-    apiKey: "AIzaSyBnHoatRyvoF6KJAgF2rI95MpCemMdO_CY",
-    authDomain: "tictactoe-b9ace.firebaseapp.com",
-    databaseURL: "https://tictactoe-b9ace.firebaseio.com",
-    storageBucket: "tictactoe-b9ace.appspot.com",
-    messagingSenderId: "51570292060"
-};
-firebase.initializeApp(config);
+var game = null;
 
-var game = new gameConstructor();
-var display = new displayConstructor();
-var player = new playerConstructor();
-$(document).ready(function () {
-    player.create();
-    click_handler();
-});
-function click_handler() {
-    $("#grid_board").on('click' , 'div' , function(){
-        display.playerSymbol(this, player.currentCharacter.symbol);
-        game.markArray($(this).attr("value"));
-        player.switchPlayer();
+$(document).ready(function(){
+    game = new gameConstructor($('#grid_board'));
+    $(".dropdown-content a").click(function() {
+        if ($(this).hasClass('med')){
+            game.createCells(16);
+            $('.grid').toggleClass('med');
+        } else if ($(this).hasClass('hard')){
+            game.createCells(25);
+            $('.grid').toggleClass('hard');
+        } else{
+            game.createCells(9);
+            $('.grid').toggleClass('ez');
+        }
     });
-}
-function gameConstructor() {
-    this.board = [];
-    this.winCombination = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6]
-    ];
-    this.markArray = function (cellPosition) {
-        this.board[cellPosition] = player.currentCharacter.symbol;
-        console.log(this.board);
-        this.winCheck();
-    };
-    this.winCheck = function () {
-        for(i = 0; i  < this.winCombination.length; i++){
-            if(this.board[this.winCombination[i][0]] === player.currentCharacter.symbol && this.board[this.winCombination[i][1]] === player.currentCharacter.symbol && this.board[this.winCombination[i][2]] === player.currentCharacter.symbol){
-                alert("Player " + player.currentCharacter.symbol + " wins");
-            }
+    // game.createCells(25);
+    game.createPlayers()
+});
+function gameConstructor(main){
+    console.log("constructor");
+    var self=this;
+    this.element = main;
+    this.cellArray = [];
+    this.players =[];
+    this.currentPlayer = 0;
+    this.createCells = function(amountCells){
+        this.element.empty();
+        for (var i=0;i<amountCells;i++) {
+            var newCell = new gridTemplate(this); //makes a call to create new cells for our game instance
+            var newCellElement = newCell.createSelf(); //new cells will be created as div vars
+            this.cellArray.push(newCell);
+            this.element.append(newCellElement);
         }
-    }
-}
-function playerConstructor() {
-    //this.currentPlayer = null;
-    this.create = function () {
-        this.character = [
-            {element: $("#player1").addClass('current_player')},
-            {element: $("#player2")}
-        ];
-        this.character = this.character.sort(function () {
-           return 0.5 - Math.random()
+    };
+    this.createPlayers = function(){
+        var player1 =new playerFactory('X',$('#player1')); //players will pass a value, and id
+        var player2 = new playerFactory('O', $('#player2'));
+        this.players.push(player1);
+        this.players.push(player2);
+
+        // Added Start Player Randomizer - Kevin
+        this.players = this.players.sort(function () {
+            return 0.5 - Math.random()
         });
-        console.log(this.character);
+        // End Code
 
-
-        this.character[0].symbol = this.character[0].element.text();
-        this.character[1].symbol = this.character[1].element.text();
-        this.currentCharacter = this.character[0];
+        this.players[0].activePlayer();
     };
-    this.activate = function (playerToActiv) {
-        playerToActiv.element.addClass('current_player');
-        this.currentCharacter = playerToActiv;
-    };
-    this.deactivate = function (playerToDeact) {
-        playerToDeact.element.removeClass('current_player');
-       // $("#grid_board").off('click' , 'div');
-    };
-    this.switchPlayer = function () {
-        if(this.currentCharacter === this.character[0]) {
-            this.deactivate(this.character[0]);
-            this.activate(this.character[1]);
-            console.log("Current player is: " + this.currentCharacter.symbol);
+    this.switchPlayers = function(){
+        if(this.currentPlayer){
+            this.currentPlayer=0;
         } else {
-            this.deactivate(this.character[1]);
-            this.activate(this.character[0]);
-            console.log("Current player is: " + this.currentCharacter.symbol);
+            this.currentPlayer=1;
         }
     };
+    this.getCurrentPlayer = function (){
+        return this.players[this.currentPlayer];
+    };
+    this.cellClicked =function(clickedCell){
+        self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
+        self.switchPlayers();
+        self.players[self.currentPlayer].activePlayer();
+        self.checkWinningCondition();
+    };
+    this.checkWinningCondition=function(){
+
+    };
 }
-function displayConstructor() {
-    this.playerSymbol = function (location, symbol) {
-        $(location).text(symbol);
+var gridTemplate = function (owner){
+    var self = this;                  //this chances each time it's run, stores a temp value for each grid
+    this.owner = owner;
+    this.symbol = null;
+    this.element = null;          //our instantization of a particular div variable
+    this.createSelf= function(){ //dynamically create divs for our game
+        this.element=$('<div>',{
+            class: "grid"
+        }).click(this.cellClick); //attaches a click handle to each div instance
+        return this.element;
+    };
+    this.cellClick = function(){        //it knows which div is clicked
+        if (self.element.hasClass('clicked')){
+            return;
+        }
+        console.log('help '+self.element);
+        var currentPlayer = self.owner.getCurrentPlayer(); //tells us who owns the turn, since the divs
+        self.symbol = currentPlayer.getSymbol();
+        self.element.addClass('clicked');
+        self.changeSymbol(self.symbol);
+        self.owner.cellClicked(self);
+    };
+    this.changeSymbol = function(symbol){
+        self.element.text(symbol)
+    };
+    this.getSymbol=function(){
+        return self.symbol;
+    };
+};
+
+var playerFactory = function(symbol, element){
+    this.symbol = symbol;
+    this.element = element;
+    this.activePlayer = function(){
+        this.element.addClass('current_player');
+    };
+    this.deactivatePlayer = function (){
+        this.element.removeClass('current_player');
+    };
+    this.getSymbol = function(){
+        return this.symbol;
     }
-}
+};
+
+/* Dont think we need this - Kevin
+
+$(".dropdown-content").click(function() {
+    if ($(this).hasClass('ez')) {
+        game.createCells(9);
+    } else if ($(this).hasClass('med')){
+        game.createCells(16);
+    } else {
+        game.createCells(25);
+    }
+});
+    */
