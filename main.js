@@ -19,12 +19,9 @@ $(document).ready(function () {
 });
 function click_handler() {
     $("#grid_board").on('click' , 'div' , function(){
-        display.playerSymbol(this, player.currentCharacter.symbol);
-        game.markArray($(this).attr("value"));
-        player.switch();
+        game.engine(this);
     });
 }
-
 
 function gameConstructor() {
     this.board = [];
@@ -38,14 +35,23 @@ function gameConstructor() {
         [0,4,8],
         [2,4,6]
     ];
-    this.markArray = function (cellPosition) {
-        this.board[cellPosition] = player.currentCharacter.symbol;
-        console.log(this.board);
-        this.winCheck();
+
+    this.engine = function (rawElement) {
+        var cellPosition = $(rawElement).attr("position");
+        if(this.board[cellPosition] === undefined){
+            display.playerSymbol(rawElement, player.currentCharacter.symbol);
+            this.markArray(cellPosition);
+            this.winCheck();
+            player.switch();
+        }
+    };
+
+    this.markArray = function (arrayIndex) {
+        this.board[arrayIndex] = player.currentCharacter.symbol;
     };
 
     this.winCheck = function () {
-        for(i = 0; i  < this.winCombination.length; i++){
+        for(i = 0; i < this.winCombination.length; i++){
             if(this.board[this.winCombination[i][0]] === player.currentCharacter.symbol && this.board[this.winCombination[i][1]] === player.currentCharacter.symbol && this.board[this.winCombination[i][2]] === player.currentCharacter.symbol){
                 alert("Player " + player.currentCharacter.symbol + " wins");
             }
@@ -53,9 +59,7 @@ function gameConstructor() {
     }
 }
 
-
 function playerConstructor() {
-    //this.currentPlayer = null;
     this.create = function () {
         this.character = [
             {element: $("#player1").addClass('current_player')},
@@ -88,7 +92,7 @@ function playerConstructor() {
 }
 
 function displayConstructor() {
-    this.playerSymbol = function (location, symbol) {
-        $(location).text(symbol);
+    this.playerSymbol = function (location, valueToDisplay) {
+        $(location).text(valueToDisplay);
     }
 }
