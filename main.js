@@ -17,6 +17,7 @@ var display = new displayConstructor();
 
 $(document).ready(function () {
     click_handler();
+   // game.playerStart();
     $('#player1').addClass('current_player');
 });
 function click_handler() {
@@ -32,7 +33,7 @@ function click_handler() {
 function playerFactory(symbol,playerTurn){
     this.symbol = symbol;
     this.playerTurn = playerTurn;
-    this.symbol = function(){                                 //returns the symbol for the particular player created
+    this.symbol = function(){  //returns the symbol for the particular player created
         return this.symbol;
     };
     this.activePlayer = function(){
@@ -59,6 +60,17 @@ function gameConstructor() {
     this.engine = function (userPositionInput) {
     game.counter++;
     };
+
+    /*
+    this.playerStart = function() {
+        console.log(this.players);
+        this.start = this.players.sort(function (a, b) {
+            return 0.5 - math.random()
+        });
+    };
+
+    */
+
     this.createPlayers = function(){                          //will call on player factory
         var player1 =  new playerFactory('X',$('#player1'));
         var player2 = new playerFactory('O',$('#player2'));
@@ -80,6 +92,8 @@ function gameConstructor() {
             console.log("Current player is: " + this.current_player)
         }
     };
+
+    /*
     this.playerLock = function () { // Deactivates the non-current player, prevents other player from clicking on things
         if(this.current_player) {
 
@@ -88,6 +102,7 @@ function gameConstructor() {
 
         }
     }
+    */
 }
 function displayConstructor() {
     this.playerSymbol = function (location,symbol) {
@@ -95,3 +110,4 @@ function displayConstructor() {
         $(location).text(symbol);
     }
 }
+
