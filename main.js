@@ -1,3 +1,26 @@
+
+
+// Firebase
+var config = {
+    apiKey: "AIzaSyBnHoatRyvoF6KJAgF2rI95MpCemMdO_CY",
+    authDomain: "tictactoe-b9ace.firebaseapp.com",
+    databaseURL: "https://tictactoe-b9ace.firebaseio.com",
+    storageBucket: "tictactoe-b9ace.appspot.com",
+    messagingSenderId: "51570292060"
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+var database = firebase.database();
+
+function writeUserData(userId, name, email) {
+    firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email
+    });
+}
+
+
 var game = null;
 
 $(document).ready(function(){
@@ -17,6 +40,7 @@ $(document).ready(function(){
     // game.createCells(25);
     game.createPlayers()
 });
+
 function gameConstructor(main){
     console.log("constructor");
     var self=this;
@@ -25,7 +49,8 @@ function gameConstructor(main){
     this.players =[];
     this.currentPlayer = 0;
     this.createCells = function(amountCells){
-        this.element.empty();
+        this.element.empty(); // If changed from easy, med, and hard, doesnt add on more cells.
+        this.cellArray = [];
         for (var i=0;i<amountCells;i++) {
             var newCell = new gridTemplate(this); //makes a call to create new cells for our game instance
             var newCellElement = newCell.createSelf(); //new cells will be created as div vars
@@ -57,7 +82,7 @@ function gameConstructor(main){
     this.getCurrentPlayer = function (){
         return this.players[this.currentPlayer];
     };
-    this.cellClicked =function(clickedCell){
+    this.cellClicked = function(clickedCell){
         self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
         self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
@@ -111,21 +136,18 @@ var playerFactory = function(symbol, element){
     }
 };
 
-/* Dont think we need this - Kevin
+// Modal that shows up when the game ends - Kevin
 
-$(".dropdown-content").click(function() {
-    if ($(this).hasClass('ez')) {
-        game.createCells(9);
-    } else if ($(this).hasClass('med')){
-        game.createCells(16);
-    } else {
-        game.createCells(25);
-    }
-});
-    */
-
-
-// Modal
-
+/*
 function modal_display() {
+    if () {
+        $('.modal_outcome').text("You win!");
+    }
+    else if () {
+        $('.modal_outcome').text("You lose!");
+    }
+    else () {
+        $('.modal_outcome').text("Draw!");
+    }
 }
+    */

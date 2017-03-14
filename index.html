@@ -6,8 +6,6 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
     <meta charset="UTF-8">
     <script src="main.js"></script>
-
-    <script src="https://code.jquery.com/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -34,15 +32,16 @@
     <div id = "grid_board"></div>
 </div>
 <div class = "players" id = "player2">O</div>
-    <div id = "chat_box">Chat Box</div>
-
+    <div id = "chat_box">Chat Box
+        <div id = "chat_log"></div>
+        <div id = "chat_text"></div>
+    </div>
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -51,6 +50,9 @@
             </div>
             <div class="modal-body">
                 <p id = "modal_outcome"><h2>Some text in the modal.</h2></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Play Again!</button>
             </div>
         </div>
 
