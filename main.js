@@ -21,7 +21,6 @@ function click_handler() {
         player.switchPlayer();
     });
 }
-
 function gameConstructor() {
     this.board = [];
     this.winCombination = [
