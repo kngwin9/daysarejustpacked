@@ -123,3 +123,9 @@ $(".dropdown-content").click(function() {
     }
 });
     */
+
+
+// Modal
+
+function modal_display() {
+}
