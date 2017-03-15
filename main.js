@@ -14,11 +14,9 @@ $(document).ready(function(){
             $('.grid').toggleClass('ez');
         }
     });
-    // game.createCells(25);
     game.createPlayers()
 });
 function gameConstructor(main){
-    console.log("constructor");
     var self=this;
     this.element = main;
     this.cellArray = [];
@@ -39,13 +37,9 @@ function gameConstructor(main){
         var player2 = new playerFactory('O', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);
-
-        // Added Start Player Randomizer - Kevin
         this.players = this.players.sort(function () {
             return 0.5 - Math.random()
         });
-        // End Code
-
         this.players[0].activePlayer();
     };
     this.switchPlayers = function(){
@@ -60,14 +54,13 @@ function gameConstructor(main){
     };
     this.cellClicked =function(clickedCell){
         self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
-        //self.switchPlayers();
-        self.players[self.currentPlayer].activePlayer();
+
         self.checkWinningCondition();
         self.switchPlayers();
+        self.players[self.currentPlayer].activePlayer();
 
     };
     this.checkWinningCondition=function(){
-
         var arr = game.cellArray;
         var rowLength = Math.sqrt(arr.length);
         //diagonal to right
