@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    width: 90vw;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -11,14 +11,22 @@ body {
     background-size: cover;
 }
 #title_container {
-    height: 11vh;
+    height: 12vh;
     width: 100%;
     background-color: deepskyblue;
     font-family: calvin_and_hobbes;
-    font-size: 75px;
+    font-size: 60px;
     text-align: center;
     letter-spacing: 8px;
     color: black;
+}
+
+#title {
+    height: 12vh;
+    width: 100%;
+    font-size: 60px;
+    color: black;
+    display: inline-block;
 }
 #container {
     background-color: #989898;
@@ -28,7 +36,7 @@ body {
 #chat_box {
     background-color: lightgoldenrodyellow;
     height: 10vh;
-    width: 90vw;
+    width: 100vw;
     font-family: calvin_and_hobbes;
     font-size: 30px;
     text-align: center;
