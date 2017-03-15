@@ -25,14 +25,14 @@ function gameConstructor(main){
         this.element.empty();
         this.cellArray=[];
         for (var i=0;i<amountCells;i++) {
-            var newCell = new gridTemplate(this); //makes a call to create new cells for our game instance
-            var newCellElement = newCell.createSelf(); //new cells will be created as div vars
+            var newCell = new gridTemplate(this);                       //makes a call to create new cells for our game instance
+            var newCellElement = newCell.createSelf();                  //new cells will be created as div vars
             this.cellArray.push(newCell);
             this.element.append(newCellElement);
         }
     };
     this.createPlayers = function(){
-        var player1 =new playerFactory('X',$('#player1')); //players will pass a value, and id
+        var player1 =new playerFactory('X',$('#player1'));              //players will pass a value, and id
         var player2 = new playerFactory('O', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);
@@ -52,8 +52,7 @@ function gameConstructor(main){
         return this.players[this.currentPlayer];
     };
     this.cellClicked =function(clickedCell){
-        self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
-
+        self.players[self.currentPlayer].deactivatePlayer();
         self.checkWinningCondition();
         self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
@@ -73,7 +72,7 @@ function gameConstructor(main){
             }
         }
         counter = 0;
-//diagonal to left
+        //diagonal to left
         for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
             if (arr[i].symbol === game.players[game.currentPlayer].symbol){
                 counter++;
@@ -84,7 +83,24 @@ function gameConstructor(main){
             }
         }
         counter = 0;
-//horizontal solution
+        // horizontal solution
+        var i = 0;
+        for(x = 0; x < arr.length -1; x += rowLength){
+            console.log();
+            while (i < rowLength + x){
+                if (arr[i].symbol === game.players[game.currentPlayer].symbol){
+                    counter++;
+                }
+                if (counter===rowLength){
+                    modal_display();
+                    return
+                }
+                i++;
+            }
+            counter = 0;
+
+        }
+        //vertical solution
         var y = 0;
         for(z = 1; z <= rowLength; z++){
             while (y <= arr.length -1){
@@ -103,21 +119,21 @@ function gameConstructor(main){
     };
 }
 var gridTemplate = function (owner){
-    var self = this;                  //this chances each time it's run, stores a temp value for each grid
+    var self = this;                                         //this chances each time it's run, stores a temp value for each grid
     this.owner = owner;
     this.symbol = null;
-    this.element = null;          //our instantization of a particular div variable
-    this.createSelf= function(){ //dynamically create divs for our game
+    this.element = null;                                    //our instantization of a particular div variable
+    this.createSelf= function(){                            //dynamically create divs for our game
         this.element=$('<div>',{
             class: "grid"
-        }).click(this.cellClick); //attaches a click handle to each div instance
+        }).click(this.cellClick);                           //attaches a click handle to each div instance
         return this.element;
     };
-    this.cellClick = function(){        //it knows which div is clicked
+    this.cellClick = function(){                            //it knows which div is clicked
         if (self.element.hasClass('clicked')){
             return;
         }
-        var currentPlayer = self.owner.getCurrentPlayer(); //tells us who owns the turn, since the divs
+        var currentPlayer = self.owner.getCurrentPlayer();  //tells us who owns the turn, since the divs
         self.symbol = currentPlayer.getSymbol();
         self.element.addClass('clicked');
         self.changeSymbol(self.symbol);

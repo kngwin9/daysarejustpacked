@@ -9,7 +9,6 @@ body {
     opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 #title_container {
     height: 11vh;
@@ -53,7 +52,6 @@ body {
     font-size: 80px;
     font-family: calvin_and_hobbes;
 }
-
 .ez{
     height:30%;
     width:30%;
@@ -82,25 +80,20 @@ body {
     font-size: 50px;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
-
 }
 .current_player {
     background-color: lightgreen;
 }
-
 h1{
     text-align: center;
 }
-
 a:link{
     text-decoration: none;
     color: white;
 }
-
 a:hover{
     text-decoration: underline;
 }
-
 .dropbtn {
     background-color: #333;
     color: white;
@@ -148,7 +141,6 @@ a:hover{
     src: url('font/calvinn.ttf')
     format('truetype')
 }
-
 .modal-content {
     text-align: center;
     width: 500px;
