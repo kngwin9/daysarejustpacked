@@ -1,5 +1,4 @@
 var game = null;
-
 $(document).ready(function(){
     game = new gameConstructor($('#grid_board'));
     $(".dropdown-content a").click(function() {
@@ -58,7 +57,6 @@ function gameConstructor(main){
         self.checkWinningCondition();
         self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
-
     };
     this.checkWinningCondition=function(){
         var arr = game.cellArray;
@@ -73,10 +71,8 @@ function gameConstructor(main){
                 modal_display();
                 return;
             }
-            console.log(i+"d to right");
         }
         counter = 0;
-        console.log();
 //diagonal to left
         for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
             if (arr[i].symbol === game.players[game.currentPlayer].symbol){
@@ -86,32 +82,11 @@ function gameConstructor(main){
                 modal_display();
                 return
             }
-            console.log(i + "d to left");
         }
-        console.log();
         counter = 0;
-/*//vertical solution
-        var i = 0;
-        for(x = 0; x < arr.length -1; x += rowLength){
-            console.log();
-            while (i < rowLength + x){
-                if (arr[i].symbol === game.players[game.currentPlayer].symbol){
-                    counter++;
-                }
-                if (counter===rowLength){
-                    modal_display();
-                    return
-                }
-                console.log(i+"vertical");
-                i++;
-            }
-            counter = 0;
-
-        }*/
 //horizontal solution
         var y = 0;
         for(z = 1; z <= rowLength; z++){
-            console.log();
             while (y <= arr.length -1){
                 if (arr[y].symbol === game.players[game.currentPlayer].symbol){
                     counter++;
@@ -120,13 +95,11 @@ function gameConstructor(main){
                     modal_display();
                     return
                 }
-                console.log(y+"horizontal");
                 y+=rowLength;
             }
             y=z;
             counter = 0;
         }
-
     };
 }
 var gridTemplate = function (owner){
@@ -144,7 +117,6 @@ var gridTemplate = function (owner){
         if (self.element.hasClass('clicked')){
             return;
         }
-        console.log('help '+self.element);
         var currentPlayer = self.owner.getCurrentPlayer(); //tells us who owns the turn, since the divs
         self.symbol = currentPlayer.getSymbol();
         self.element.addClass('clicked');
@@ -158,7 +130,6 @@ var gridTemplate = function (owner){
         return self.symbol;
     };
 };
-
 var playerFactory = function(symbol, element){
     this.symbol = symbol;
     this.element = element;
@@ -172,18 +143,6 @@ var playerFactory = function(symbol, element){
         return this.symbol;
     }
 };
-
-// Modal
 function modal_display() {
-    // if () {
-    //     $('.modal_outcome').text("You win!");
-    // }
-    // else if () {
-    //     $('.modal_outcome').text("You lose!");
-    // }
-    // else () {
-    //     $('.modal_outcome').text("Draw!");
-    // }
-
     $("#myModal").modal();
 }
