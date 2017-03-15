@@ -98,7 +98,6 @@ function gameConstructor(main){
                 i++;
             }
             counter = 0;
-
         }
         //vertical solution
         var y = 0;
