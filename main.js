@@ -60,10 +60,10 @@ function gameConstructor(main){
     };
     this.cellClicked =function(clickedCell){
         self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
-        self.switchPlayers();
+        //self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
         self.checkWinningCondition();
-       // self.switchPlayers();
+        self.switchPlayers();
 
     };
     this.checkWinningCondition=function(){
@@ -73,7 +73,7 @@ function gameConstructor(main){
         //diagonal to right
         var counter=0;
         for(i = 0; i <= arr.length -1; i+= rowLength + 1){
-            if (arr[i].symbol === 'X'){
+            if (arr[i].symbol === game.players[game.currentPlayer].symbol){
                 counter++;
             }
             if (counter === rowLength){
@@ -86,7 +86,7 @@ function gameConstructor(main){
         console.log();
 //diagonal to left
         for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
-            if (arr[i].symbol === "X"){
+            if (arr[i].symbol === game.players[game.currentPlayer].symbol){
                 counter++;
             }
             if (counter===rowLength){
@@ -97,13 +97,30 @@ function gameConstructor(main){
         }
         console.log();
         counter = 0;
+/*//vertical solution
+        var i = 0;
+        for(x = 0; x < arr.length -1; x += rowLength){
+            console.log();
+            while (i < rowLength + x){
+                if (arr[i].symbol === game.players[game.currentPlayer].symbol){
+                    counter++;
+                }
+                if (counter===rowLength){
+                    modal_display();
+                    return
+                }
+                console.log(i+"vertical");
+                i++;
+            }
+            counter = 0;
 
+        }*/
 //horizontal solution
         var y = 0;
         for(z = 1; z <= rowLength; z++){
             console.log();
             while (y <= arr.length -1){
-                if (arr[y].symbol === "X"){
+                if (arr[y].symbol === game.players[game.currentPlayer].symbol){
                     counter++;
                  }
                 if (counter===rowLength){
@@ -114,6 +131,7 @@ function gameConstructor(main){
                 y+=rowLength;
             }
             y=z;
+            counter = 0;
         }
 
     };

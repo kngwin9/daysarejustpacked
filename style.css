@@ -79,7 +79,7 @@ body {
     border: 1px solid;
     margin: auto;
     text-align: center;
-    font-size: 70px;
+    font-size: 50px;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
 
@@ -155,3 +155,6 @@ a:hover{
     height: 350px;
 }
 
+.btn btn-info btn-lg {
+
+}
