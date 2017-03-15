@@ -26,6 +26,7 @@ function gameConstructor(main){
     this.currentPlayer = 0;
     this.createCells = function(amountCells){
         this.element.empty();
+        this.cellArray=[];
         for (var i=0;i<amountCells;i++) {
             var newCell = new gridTemplate(this); //makes a call to create new cells for our game instance
             var newCellElement = newCell.createSelf(); //new cells will be created as div vars
@@ -59,11 +60,73 @@ function gameConstructor(main){
     };
     this.cellClicked =function(clickedCell){
         self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
-        self.switchPlayers();
+        // self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
         self.checkWinningCondition();
+        self.switchPlayers();
+
     };
     this.checkWinningCondition=function(){
+
+        var arr = game.cellArray;
+        var rowLength = Math.sqrt(arr.length);
+        //diagonal to right
+        var counter=0;
+        for(i = 0; i <= arr.length -1; i+= rowLength + 1){
+            if (arr[i].symbol === 'X'){
+                counter++;
+            }
+            if (counter === rowLength){
+               modal_display();
+                return;
+            }
+            console.log(i+"d to right");
+        }
+        counter = 0;
+        console.log();
+//diagonal to left
+        for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
+            if (arr[i].symbol === "X"){
+                counter++;
+            }
+            if (counter===rowLength){
+                alert("BRIAN WINS");
+                return
+            }
+            console.log(i + "d to left");
+        }
+        console.log();
+        counter = 0;
+//vertical solution
+        var i = 0;
+        for(x = 0; x < arr.length -1; x += rowLength){
+            console.log();
+            while (i < rowLength + x){
+                if (arr[i].symbol === "X"){
+                    counter++;
+                }
+                if (counter===rowLength){
+                    alert("you WIN");
+                    return
+                }
+                console.log(i+"horizontal");
+                i++;
+            }
+        }
+        counter = 0;
+//horizontal solution
+        var y = 0;
+        for(z = 1; z <= rowLength; z++){
+            console.log();
+            while (y <= arr.length -1){
+                // if (arr[i].symbol === "X"){
+                //     counter++;
+                // }
+                console.log(y+"vertival");
+                y+=rowLength;
+            }
+            y=z;
+        }
 
     };
 }
@@ -110,22 +173,15 @@ var playerFactory = function(symbol, element){
         return this.symbol;
     }
 };
-
-/* Dont think we need this - Kevin
-
-$(".dropdown-content").click(function() {
-    if ($(this).hasClass('ez')) {
-        game.createCells(9);
-    } else if ($(this).hasClass('med')){
-        game.createCells(16);
-    } else {
-        game.createCells(25);
-    }
-});
-    */
-
-
 // Modal
-
 function modal_display() {
+    // if () {
+    //     $('.modal_outcome').text("You win!");
+    // }
+    // else if () {
+    //     $('.modal_outcome').text("You lose!");
+    // }
+    // else () {
+    //     $('.modal_outcome').text("Draw!");
+    // }
 }
