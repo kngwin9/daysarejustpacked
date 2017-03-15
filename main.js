@@ -1,28 +1,3 @@
-
-/*
-// Firebase
-var config = {
-    apiKey: "AIzaSyBnHoatRyvoF6KJAgF2rI95MpCemMdO_CY",
-    authDomain: "tictactoe-b9ace.firebaseapp.com",
-    databaseURL: "https://tictactoe-b9ace.firebaseio.com",
-    storageBucket: "tictactoe-b9ace.appspot.com",
-    messagingSenderId: "51570292060"
-};
-firebase.initializeApp(config);
-
-// Get a reference to the database service
-var database = firebase.database();
-
-function writeUserData(userId, name, email) {
-    firebase.database().ref('users/' + userId).set({
-        username: name,
-        email: email
-    });
-}
-
-*/
-
-
 var game = null;
 
 $(document).ready(function(){
@@ -42,7 +17,6 @@ $(document).ready(function(){
     // game.createCells(25);
     game.createPlayers()
 });
-
 function gameConstructor(main){
     console.log("constructor");
     var self=this;
@@ -51,8 +25,8 @@ function gameConstructor(main){
     this.players =[];
     this.currentPlayer = 0;
     this.createCells = function(amountCells){
-        this.element.empty(); // If changed from easy, med, and hard, doesnt add on more cells.
-        this.cellArray = [];
+        this.element.empty();
+        this.cellArray=[];
         for (var i=0;i<amountCells;i++) {
             var newCell = new gridTemplate(this); //makes a call to create new cells for our game instance
             var newCellElement = newCell.createSelf(); //new cells will be created as div vars
@@ -84,13 +58,76 @@ function gameConstructor(main){
     this.getCurrentPlayer = function (){
         return this.players[this.currentPlayer];
     };
-    this.cellClicked = function(clickedCell){
+    this.cellClicked =function(clickedCell){
         self.players[self.currentPlayer].deactivatePlayer(); //before switch deactivate player;
         self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
         self.checkWinningCondition();
+       // self.switchPlayers();
+
     };
     this.checkWinningCondition=function(){
+
+        var arr = game.cellArray;
+        var rowLength = Math.sqrt(arr.length);
+        //diagonal to right
+        var counter=0;
+        for(i = 0; i <= arr.length -1; i+= rowLength + 1){
+            if (arr[i].symbol === 'X'){
+                counter++;
+            }
+            if (counter === rowLength){
+                modal_display();
+                return;
+            }
+            console.log(i+"d to right");
+        }
+        counter = 0;
+        console.log();
+//diagonal to left
+        for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
+            if (arr[i].symbol === "X"){
+                counter++;
+            }
+            if (counter===rowLength){
+                modal_display();
+                return
+            }
+            console.log(i + "d to left");
+        }
+        console.log();
+        counter = 0;
+//vertical solution
+        var i = 0;
+        for(x = 0; x < arr.length -1; x += rowLength){
+            console.log();
+            while (i < rowLength + x){
+                if (arr[i].symbol === "X"){
+                    counter++;
+                }
+                if (counter===rowLength){
+                    modal_display();
+                    return
+                }
+                console.log(i+"horizontal");
+                i++;
+            }
+            counter = 0;
+
+        }
+//horizontal solution
+        var y = 0;
+        for(z = 1; z <= rowLength; z++){
+            console.log();
+            while (y <= arr.length -1){
+                if (arr[y].symbol === "X"){
+                    counter++;
+                 }
+                console.log(y+"vertival");
+                y+=rowLength;
+            }
+            y=z;
+        }
 
     };
 }
@@ -138,18 +175,19 @@ var playerFactory = function(symbol, element){
     }
 };
 
-// Modal that shows up when the game ends - Kevin
-
-/*
+// Modal
 function modal_display() {
-    if () {
-        $('.modal_outcome').text("You win!");
-    }
-    else if () {
-        $('.modal_outcome').text("You lose!");
-    }
-    else () {
-        $('.modal_outcome').text("Draw!");
-    }
+    // if () {
+    //     $('.modal_outcome').text("You win!");
+    // }
+    // else if () {
+    //     $('.modal_outcome').text("You lose!");
+    // }
+    // else () {
+    //     $('.modal_outcome').text("Draw!");
+    // }
+
+
+
+    $("#myModal").modal();
 }
-    */
