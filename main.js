@@ -97,24 +97,7 @@ function gameConstructor(main){
         }
         console.log();
         counter = 0;
-//vertical solution
-        var i = 0;
-        for(x = 0; x < arr.length -1; x += rowLength){
-            console.log();
-            while (i < rowLength + x){
-                if (arr[i].symbol === "X"){
-                    counter++;
-                }
-                if (counter===rowLength){
-                    modal_display();
-                    return
-                }
-                console.log(i+"horizontal");
-                i++;
-            }
-            counter = 0;
 
-        }
 //horizontal solution
         var y = 0;
         for(z = 1; z <= rowLength; z++){
@@ -123,7 +106,11 @@ function gameConstructor(main){
                 if (arr[y].symbol === "X"){
                     counter++;
                  }
-                console.log(y+"vertival");
+                if (counter===rowLength){
+                    modal_display();
+                    return
+                }
+                console.log(y+"horizontal");
                 y+=rowLength;
             }
             y=z;
@@ -186,8 +173,6 @@ function modal_display() {
     // else () {
     //     $('.modal_outcome').text("Draw!");
     // }
-
-
 
     $("#myModal").modal();
 }
