@@ -105,7 +105,7 @@ function gameConstructor(main){
             while (y <= arr.length -1){
                 if (arr[y].symbol === game.players[game.currentPlayer].symbol){
                     counter++;
-                 }
+                }
                 if (counter===rowLength){
                     modal_display();
                     return
