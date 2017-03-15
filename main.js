@@ -18,21 +18,59 @@ $(document).ready(function(){
 function gameConstructor(main){
     var self=this;
     this.element = main;
+    this.gCounter = null;
     this.cellArray = [];
-    this.players =[];
+    this.players = [];
     this.currentPlayer = 0;
-    this.createCells = function(amountCells){
+    this.createCells = function (amountCells) {
         this.element.empty();
-        this.cellArray=[];
-        for (var i=0;i<amountCells;i++) {
+        this.gCounter = null;
+        this.cellArray = [];
+        for (var i = 0; i < amountCells; i++) {
             var newCell = new gridTemplate(this);                       //makes a call to create new cells for our game instance
             var newCellElement = newCell.createSelf();                  //new cells will be created as div vars
             this.cellArray.push(newCell);
             this.element.append(newCellElement);
         }
+        this.combinations = [];
+        this.generateCombinations();
     };
-    this.createPlayers = function(){
-        var player1 =new playerFactory('X',$('#player1'));              //players will pass a value, and id
+    this.generateCombinations = function () {
+        this.rowLength = Math.sqrt(this.cellArray.length);
+        var i = 0;
+        for (x = 0; x < this.cellArray.length - 1; x += this.rowLength) {
+            var horizontalCombo = [];
+            while (i < this.rowLength + x) {
+                horizontalCombo.push(i);
+                i++;
+            }
+            this.combinations.push(horizontalCombo);
+        }
+        var y = 0;
+        for (z = 1; z <= this.rowLength; z++) {
+            var verticalCombo = [];
+            while (y <= this.cellArray.length - 1) {
+                verticalCombo.push(y);
+                y += this.rowLength;
+            }
+            this.combinations.push(verticalCombo);
+            y = z;
+        }
+        var diagonalRightCombo = [];
+        for (i = 0; i <= this.cellArray.length - 1; i += this.rowLength + 1) {
+            diagonalRightCombo.push(i);
+        }
+        this.combinations.push(diagonalRightCombo);
+
+        var diagonalLeftCombo = [];
+        for (q = this.rowLength - 1; q < this.cellArray.length - 1; q += this.rowLength - 1) {
+            diagonalLeftCombo.push(q);
+        }
+        this.combinations.push(diagonalLeftCombo);
+        console.log(this.combinations);
+    };
+    this.createPlayers = function () {
+        var player1 = new playerFactory('X', $('#player1'));              //players will pass a value, and id
         var player2 = new playerFactory('O', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);
@@ -41,81 +79,46 @@ function gameConstructor(main){
         });
         this.players[0].activePlayer();
     };
-    this.switchPlayers = function(){
-        if(this.currentPlayer){
-            this.currentPlayer=0;
+    this.switchPlayers = function () {
+        if (this.currentPlayer) {
+            this.currentPlayer = 0;
         } else {
-            this.currentPlayer=1;
+            this.currentPlayer = 1;
         }
     };
-    this.getCurrentPlayer = function (){
+    this.getCurrentPlayer = function () {
         return this.players[this.currentPlayer];
     };
-    this.cellClicked =function(clickedCell){
+    this.cellClicked = function (clickedCell) {
         self.players[self.currentPlayer].deactivatePlayer();
         self.checkWinningCondition();
         self.switchPlayers();
         self.players[self.currentPlayer].activePlayer();
     };
-    this.checkWinningCondition=function(){
-        var arr = game.cellArray;
-        var rowLength = Math.sqrt(arr.length);
-        //diagonal to right
-        var counter=0;
-        for(i = 0; i <= arr.length -1; i+= rowLength + 1){
-            if (arr[i].symbol === game.players[game.currentPlayer].symbol){
-                counter++;
-            }
-            if (counter === rowLength){
-                modal_display();
-                return;
-            }
-        }
-        counter = 0;
-        //diagonal to left
-        for(i = rowLength -1 ; i < arr.length -1; i+= rowLength - 1){
-            if (arr[i].symbol === game.players[game.currentPlayer].symbol){
-                counter++;
-            }
-            if (counter===rowLength){
-                modal_display();
-                return
-            }
-        }
-        counter = 0;
-        // horizontal solution
-        var i = 0;
-        for(x = 0; x < arr.length -1; x += rowLength){
-            console.log();
-            while (i < rowLength + x){
-                if (arr[i].symbol === game.players[game.currentPlayer].symbol){
-                    counter++;
+    this.checkWinningCondition = function () {
+        game.gCounter++;
+        for (s = 0; s < this.combinations.length; s++) {
+            var count = 0;
+            for (z = 0; z < this.combinations[s].length; z++) {
+                if (this.cellArray[this.combinations[s][z]].symbol === this.players[this.currentPlayer].symbol) {
+                    count++;
                 }
-                if (counter===rowLength){
+                if (count === this.rowLength) {
+                    $('#modal_outcome_draw').hide();
+                    $('#modal_outcome_win').show();
                     modal_display();
-                    return
+                    return;
                 }
-                i++;
             }
-            counter = 0;
         }
-        //vertical solution
-        var y = 0;
-        for(z = 1; z <= rowLength; z++){
-            while (y <= arr.length -1){
-                if (arr[y].symbol === game.players[game.currentPlayer].symbol){
-                    counter++;
-                }
-                if (counter===rowLength){
-                    modal_display();
-                    return
-                }
-                y+=rowLength;
-            }
-            y=z;
-            counter = 0;
+        if (count !== game.rowLength && game.gCounter === game.cellArray.length){
+            $('#modal_outcome_win').hide();
+            $('#modal_outcome_draw').show();
+            modal_display();
+            // alert("DRAW");
+            return;
         }
-    };
+    }
 }
 var gridTemplate = function (owner){
     var self = this;                                         //this chances each time it's run, stores a temp value for each grid
@@ -130,7 +133,7 @@ var gridTemplate = function (owner){
     };
     this.cellClick = function(){                            //it knows which div is clicked
         if (self.element.hasClass('clicked')){
-            return;
+            return
         }
         var currentPlayer = self.owner.getCurrentPlayer();  //tells us who owns the turn, since the divs
         self.symbol = currentPlayer.getSymbol();
@@ -159,5 +162,6 @@ var playerFactory = function(symbol, element){
     }
 };
 function modal_display() {
+   // $('#modal_outcome').text("Player: " + game.players[game.currentPlayer].symbol);
     $("#myModal").modal();
 }

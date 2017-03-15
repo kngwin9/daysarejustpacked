@@ -80,14 +80,30 @@ body {
 }
 .players {
     background-color: lightgoldenrodyellow;
-    height: 10vh;
-    width: 10vh;
+    height: 15vh;
+    width: 15vh;
     border: 1px solid;
     margin: auto;
     text-align: center;
     font-size: 50px;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
+}
+
+#player1 {
+    background-image: url("images/calvinicon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+#player2 {
+    background-image: url("images/hobbesicon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    text-align: end;
+    font-size: 50px;
 }
 .current_player {
     background-color: lightgreen;
