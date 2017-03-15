@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    width: 90vw;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -9,15 +9,24 @@ body {
     opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 #title_container {
-    height: 11vh;
+    height: 12vh;
     width: 100%;
     background-color: deepskyblue;
     font-family: calvin_and_hobbes;
-    font-size: 75px;
+    font-size: 60px;
     text-align: center;
+    letter-spacing: 8px;
+    color: black;
+}
+
+#title {
+    height: 12vh;
+    width: 100%;
+    font-size: 60px;
+    color: black;
+    display: inline-block;
 }
 #container {
     background-color: #989898;
@@ -27,12 +36,13 @@ body {
 #chat_box {
     background-color: lightgoldenrodyellow;
     height: 10vh;
-    width: 90vw;
+    width: 100vw;
     font-family: calvin_and_hobbes;
     font-size: 30px;
     text-align: center;
     padding: 2%;
     border-radius: 30px;
+    display: inline-block;
 }
 #grid_board {
     height: 70vh;
@@ -47,10 +57,9 @@ body {
     box-sizing: border-box;
     text-align: center;
     display: inline-block;
-    font-size: 100px;
+    font-size: 80px;
     font-family: calvin_and_hobbes;
 }
-
 .ez{
     height:30%;
     width:30%;
@@ -76,27 +85,23 @@ body {
     border: 1px solid;
     margin: auto;
     text-align: center;
-    font-size: 70px;
+    font-size: 50px;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
 }
 .current_player {
     background-color: lightgreen;
 }
-
 h1{
     text-align: center;
 }
-
 a:link{
     text-decoration: none;
     color: white;
 }
-
 a:hover{
     text-decoration: underline;
 }
-
 .dropbtn {
     background-color: #333;
     color: white;
@@ -144,9 +149,12 @@ a:hover{
     src: url('font/calvinn.ttf')
     format('truetype')
 }
-
 .modal-content {
     text-align: center;
     width: 500px;
     height: 350px;
+}
+
+.dropbtn a {
+    color: #ffffff;
 }
