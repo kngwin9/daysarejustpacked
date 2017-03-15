@@ -15,8 +15,8 @@ $(document).ready(function(){
     });
     game.createPlayers()
 });
-function gameConstructor(main) {
-    var self = this;
+function gameConstructor(main){
+    var self=this;
     this.element = main;
     this.cellArray = [];
     this.players = [];
@@ -34,7 +34,6 @@ function gameConstructor(main) {
         this.generateCombinations();
     };
     this.generateCombinations = function () {
-
         this.rowLength = Math.sqrt(this.cellArray.length);
         var i = 0;
         for (x = 0; x < this.cellArray.length - 1; x += this.rowLength) {
@@ -61,7 +60,6 @@ function gameConstructor(main) {
             diagonalRightCombo.push(i);
         }
         this.combinations.push(diagonalRightCombo);
-
 
         var diagonalLeftCombo = [];
         for (q = this.rowLength - 1; q < this.cellArray.length - 1; q += this.rowLength - 1) {
