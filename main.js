@@ -1,5 +1,5 @@
 
-
+/*
 // Firebase
 var config = {
     apiKey: "AIzaSyBnHoatRyvoF6KJAgF2rI95MpCemMdO_CY",
@@ -19,6 +19,8 @@ function writeUserData(userId, name, email) {
         email: email
     });
 }
+
+*/
 
 
 var game = null;
