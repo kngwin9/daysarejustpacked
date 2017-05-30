@@ -1,0 +1,194 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    background-image: url("images/calvinandhobbesback1.jpg");
+    background-size: contain;
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#title_container {
+    height: 12vh;
+    width: 100%;
+    background-color: deepskyblue;
+    font-family: calvin_and_hobbes;
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 8px;
+    color: black;
+}
+
+#title {
+    height: 12vh;
+    width: 100%;
+    font-size: 60px;
+    color: black;
+    display: inline-block;
+}
+#container {
+    background-color: #989898;
+    height: 70vh;
+    width: 70vw;
+}
+#chat_box {
+    background-color: lightgoldenrodyellow;
+    height: 10vh;
+    width: 100vw;
+    font-family: calvin_and_hobbes;
+    font-size: 30px;
+    text-align: center;
+    padding: 2%;
+    border-radius: 30px;
+    display: inline-block;
+}
+#grid_board {
+    height: 70vh;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid {
+    background-color: whitesmoke;
+    border: 1px solid #B0B0B0;
+    margin: auto;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    font-size: 80px;
+    font-family: calvin_and_hobbes;
+}
+.ez{
+    height:30%;
+    width:30%;
+}
+.med{
+    height: 25%;
+    width: 25%;
+}
+.hard{
+    width:20%;
+    height: 20%;
+}
+#ez_btn, #med_btn, #hard_btn {
+    height: 60%;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+}
+.players {
+    background-color: lightgoldenrodyellow;
+    height: 10vh;
+    width: 10vh;
+    border: 1px solid;
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+    font-family: calvin_and_hobbes;
+    border-radius: 30px;
+}
+#player_pic1 {
+    height: 15vh;
+    width: 15vh;
+    border: 1px solid;
+    margin: auto;
+    border-radius: 30px;
+    background-image: url("images/calvinicon.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#player_pic2 {
+    height: 15vh;
+    width: 15vh;
+    border: 1px solid;
+    margin: auto;
+    border-radius: 30px;
+    background-image: url("images/hobbesicon.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#player1 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+#player2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+
+    font-size: 80px;
+}
+.current_player {
+    background-color: lightgreen;
+}
+h1{
+    text-align: center;
+}
+a:link{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    text-decoration: underline;
+}
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 16px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: calvin_and_hobbes;
+    letter-spacing: 6px;
+    margin-bottom: 5%;
+}
+.dropbtn:hover{
+    background-color: lightslategrey;
+}
+.dropdown:hover .dropbtn {
+    background-color: lightslategrey;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+@font-face {
+    font-family: 'calvin_and_hobbes';
+    src: url('font/calvinn.ttf')
+    format('truetype')
+}
+.modal-content {
+    text-align: center;
+    width: 500px;
+    height: 350px;
+}
+
+.dropbtn a {
+    color: #ffffff;
+}
