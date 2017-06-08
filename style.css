@@ -180,7 +180,7 @@ a:hover{
 }
 @font-face {
     font-family: 'calvin_and_hobbes';
-    src: url('font/calvinn.ttf')
+    src: url('font/calvinn.TTF')
     format('truetype')
 }
 .modal-content {
