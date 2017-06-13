@@ -1,34 +1,28 @@
 body {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
+    height: 100%;
+    width: 100%;
     background-image: url("images/calvinandhobbesback1.jpg");
-    background-size: contain;
     opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
 }
 #title_container {
-    height: 12vh;
+    height: 100%;
     width: 100%;
     background-color: deepskyblue;
     font-family: calvin_and_hobbes;
-    font-size: 60px;
+    font-size: 8vh;
     text-align: center;
     letter-spacing: 8px;
     color: black;
 }
-
 #title {
     height: 12vh;
     width: 100%;
     font-size: 60px;
     color: black;
-    display: inline-block;
 }
-#container {
+#game_cont {
     background-color: #989898;
     height: 70vh;
     width: 70vw;
@@ -114,14 +108,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.9;
+    font-size: 7vh;
 }
 
 #player2 {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.9;
-
-    font-size: 80px;
+    font-size: 10vh;
 }
 .current_player {
     background-color: lightgreen;
@@ -139,13 +133,13 @@ a:hover{
 .dropbtn {
     background-color: #333;
     color: white;
-    padding: 16px;
+    padding: 1%;
     font-size: 12px;
     border: none;
     cursor: pointer;
     font-family: calvin_and_hobbes;
     letter-spacing: 6px;
-    margin-bottom: 5%;
+    float: right;
 }
 .dropbtn:hover{
     background-color: lightslategrey;
@@ -154,8 +148,7 @@ a:hover{
     background-color: lightslategrey;
 }
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: static;
 }
 .dropdown-content {
     display: none;
