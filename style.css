@@ -1,13 +1,18 @@
 body {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    margin: auto;
     background-image: url("images/calvinandhobbesback1.jpg");
     opacity: 0.9;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 #title_container {
-    height: 100%;
+    height: 12%;
     width: 100%;
     background-color: deepskyblue;
     font-family: calvin_and_hobbes;
@@ -16,30 +21,19 @@ body {
     letter-spacing: 8px;
     color: black;
 }
-#title {
-    height: 12vh;
-    width: 100%;
-    font-size: 60px;
-    color: black;
-}
-#game_cont {
-    background-color: #989898;
-    height: 70vh;
-    width: 70vw;
-}
-#chat_box {
-    background-color: lightgoldenrodyellow;
-    height: 10vh;
-    width: 100vw;
-    font-family: calvin_and_hobbes;
-    font-size: 30px;
-    text-align: center;
-    padding: 2%;
-    border-radius: 30px;
+
+.title{
     display: inline-block;
+    text-align: center;
+}
+
+#container {
+    background-color: #989898;
+    height: 70%;
+    width: 65%;
 }
 #grid_board {
-    height: 70vh;
+    height: 100%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +45,7 @@ body {
     box-sizing: border-box;
     text-align: center;
     display: inline-block;
-    font-size: 80px;
+    font-size: 10vh;
     font-family: calvin_and_hobbes;
 }
 .ez{
@@ -79,7 +73,7 @@ body {
     border: 1px solid;
     margin: auto;
     text-align: center;
-    font-size: 50px;
+    font-size: 8vh;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
 }
@@ -108,14 +102,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.9;
-    font-size: 7vh;
 }
 
 #player2 {
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.9;
-    font-size: 10vh;
 }
 .current_player {
     background-color: lightgreen;
@@ -133,13 +125,13 @@ a:hover{
 .dropbtn {
     background-color: #333;
     color: white;
-    padding: 1%;
-    font-size: 12px;
+    padding: 2vh;
+    font-size: 2vh;
     border: none;
     cursor: pointer;
     font-family: calvin_and_hobbes;
     letter-spacing: 6px;
-    float: right;
+    margin-bottom: 5%;
 }
 .dropbtn:hover{
     background-color: lightslategrey;
@@ -148,7 +140,8 @@ a:hover{
     background-color: lightslategrey;
 }
 .dropdown {
-    position: static;
+    position: relative;
+    display: inline-block;
 }
 .dropdown-content {
     display: none;
@@ -173,7 +166,7 @@ a:hover{
 }
 @font-face {
     font-family: 'calvin_and_hobbes';
-    src: url('font/calvinn.TTF')
+    src: url('font/calvinn.ttf')
     format('truetype')
 }
 .modal-content {

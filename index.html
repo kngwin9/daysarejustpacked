@@ -10,90 +10,44 @@
     <title>Tic Tac Toe Your Face!</title>
 </head>
 <body>
-<!--<div class="container">-->
-    <!--<div class="row">-->
-        <!--<div id = "title_container">Days Are Just Packed-->
-            <!--&lt;!&ndash;<div style="float:left;">&ndash;&gt;-->
-                <!--&lt;!&ndash;<button class="dropbtn"><a href="about.html">About Us</a></button>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div class="dropdown" style="float:right;">-->
-                <!--<button class="dropbtn">Settings</button>-->
-                <!--<div class="dropdown-content mode">-->
-                    <!--<a class="ez" id = "ez_btn" href="#">Easy</a>-->
-                    <!--<a class="med" id = "med_btn" href="#">Medium</a>-->
-                    <!--<a class="hard" id = "hard_btn" href="#">Hard</a>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="row">-->
-        <!--<div class="col">-->
-            <!--<div class="players" id="player1">X</div>-->
-            <!--<div id="player_pic1"></div>-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--<div id="game_cont">-->
-                <!--<div id="grid_board"></div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col">-->
-            <!--<div id="player_pic2"></div>-->
-            <!--<div class="players" id="player2">O</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<div class="container">
-    <div class="row">
-        <div id="title_container">
+    <div id="title_container">
+        <div class="title">
             Days Are Just Packed
-            <div class="dropdown">
-                <button class="dropbtn">Settings</button>
-                    <div class="dropdown-content mode">
-                        <a class="ez" id="ez_btn" href="#">Easy</a>
-                        <a class="med" id="med_btn" href="#">Medium</a>
-                        <a class="hard" id="hard_btn" href="#">Hard</a>
-                    </div>
+        </div>
+        <div class="dropdown" style="float:right;">
+            <button class="dropbtn">Settings</button>
+            <div class="dropdown-content mode">
+                <a class="ez" id = "ez_btn" href="#">Easy</a>
+                <a class="med" id = "med_btn" href="#">Medium</a>
+                <a class="hard" id = "hard_btn" href="#">Hard</a>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-sm-1">
-            <div id="player_pic1"></div>
-            <div class="players" id="player1">X</div>
-        </div>
-        <div class="col-sm-2">
-            <div id = "game_cont">
-                <div id = "grid_board"></div>
-            </div>
-        </div>
-        <div class="col-sm-9">
-            <div id="player_pic2"></div>
-            <div class="players" id="player2">O</div>
-        </div>
+    <div class = "players" id = "player1">X</div>
+    <div id="player_pic1"></div>
+    <div id = "container">
+        <div id = "grid_board"></div>
     </div>
-</div>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h1 class="modal-title">Good Game!</h1>
-            </div>
-            <div class="modal-body">
-                <h2 id="modal_outcome_win">You Win!</h2>
-                <h2 id="modal_outcome_draw">Draw :(</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Play Again!</button>
+    <div id="player_pic2"></div>
+    <div class = "players" id = "player2">O</div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h1 class="modal-title">Good Game!</h1>
+                </div>
+                <div class="modal-body">
+                    <h2 id = "modal_outcome_win">You Win!</h2>
+                    <h2 id = "modal_outcome_draw">Draw :(</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset_game()" >Play Again!</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
