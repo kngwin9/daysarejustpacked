@@ -162,7 +162,6 @@ var playerFactory = function(symbol, element){
 function modal_display() {
     $("#myModal").modal();
 }
-
 function reset_game() {
     location.reload();
 }
