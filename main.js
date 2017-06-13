@@ -13,7 +13,7 @@ $(document).ready(function(){
             $('.grid').toggleClass('ez');
         }
     });
-    game.createPlayers()
+    game.createPlayers();
 });
 function gameConstructor(main){
     var self=this;
@@ -67,7 +67,6 @@ function gameConstructor(main){
             diagonalLeftCombo.push(q);
         }
         this.combinations.push(diagonalLeftCombo);
-        console.log(this.combinations);
     };
     this.createPlayers = function () {
         var player1 = new playerFactory('X', $('#player1'));              //players will pass a value, and id
@@ -115,7 +114,6 @@ function gameConstructor(main){
             $('#modal_outcome_win').hide();
             $('#modal_outcome_draw').show();
             modal_display();
-            // alert("DRAW");
             return;
         }
     }
@@ -162,6 +160,8 @@ var playerFactory = function(symbol, element){
     }
 };
 function modal_display() {
-   // $('#modal_outcome').text("Player: " + game.players[game.currentPlayer].symbol);
     $("#myModal").modal();
+}
+function reset_game() {
+    location.reload();
 }
