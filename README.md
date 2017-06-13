@@ -1,11 +1,18 @@
 # Days Are Just Packed - Tic Tac Toe
 
-##### Days Are Just Packed is a Calvin and Hobbes, tic tac toe application that was developed during our first hackathon. We used Javascript, HTML, CSS, Bootstrap, and jQuery in our project. 
+##### Days Are Just Packed is a Calvin and Hobbes, tic tac toe application that was developed during our first hackathon.
 
 ### Team Members
 - Joseph Tugade
 - Kevin Nguyen
 - Brian Bernstein
+
+### Technologies
+- Javascript
+- HTML
+- CSS
+- Bootstrap
+- jQuery
 
 ### Hackathon Requirements
 - Must have at least 2 players
