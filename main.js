@@ -1,4 +1,5 @@
 var game = null;
+
 $(document).ready(function(){
     game = new gameConstructor($('#grid_board'));
     $(".dropdown-content a").click(function() {
@@ -15,6 +16,7 @@ $(document).ready(function(){
     });
     game.createPlayers();
 });
+
 function gameConstructor(main){
     var self=this;
     this.element = main;
@@ -27,8 +29,8 @@ function gameConstructor(main){
         this.gCounter = null;
         this.cellArray = [];
         for (var i = 0; i < amountCells; i++) {
-            var newCell = new gridTemplate(this);                       //makes a call to create new cells for our game instance
-            var newCellElement = newCell.createSelf();                  //new cells will be created as div vars
+            var newCell = new gridTemplate(this);
+            var newCellElement = newCell.createSelf();
             this.cellArray.push(newCell);
             this.element.append(newCellElement);
         }
@@ -69,7 +71,7 @@ function gameConstructor(main){
         this.combinations.push(diagonalLeftCombo);
     };
     this.createPlayers = function () {
-        var player1 = new playerFactory('X', $('#player1'));              //players will pass a value, and id
+        var player1 = new playerFactory('X', $('#player1'));
         var player2 = new playerFactory('O', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);
@@ -118,22 +120,23 @@ function gameConstructor(main){
         }
     }
 }
+
 var gridTemplate = function (owner){
-    var self = this;                                         //this chances each time it's run, stores a temp value for each grid
+    var self = this;
     this.owner = owner;
     this.symbol = null;
-    this.element = null;                                    //our instantization of a particular div variable
-    this.createSelf= function(){                            //dynamically create divs for our game
+    this.element = null;
+    this.createSelf= function(){
         this.element=$('<div>',{
             class: "grid"
-        }).click(this.cellClick);                           //attaches a click handle to each div instance
+        }).click(this.cellClick);
         return this.element;
     };
-    this.cellClick = function(){                            //it knows which div is clicked
+    this.cellClick = function(){
         if (self.element.hasClass('clicked')){
             return
         }
-        var currentPlayer = self.owner.getCurrentPlayer();  //tells us who owns the turn, since the divs
+        var currentPlayer = self.owner.getCurrentPlayer();
         self.symbol = currentPlayer.getSymbol();
         self.element.addClass('clicked');
         self.changeSymbol(self.symbol);
@@ -146,6 +149,7 @@ var gridTemplate = function (owner){
         return self.symbol;
     };
 };
+
 var playerFactory = function(symbol, element){
     this.symbol = symbol;
     this.element = element;
@@ -159,9 +163,11 @@ var playerFactory = function(symbol, element){
         return this.symbol;
     }
 };
+
 function modal_display() {
     $("#myModal").modal();
 }
+
 function reset_game() {
     location.reload();
 }
