@@ -98,6 +98,26 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+#player_pic1 {
+    height: 15vh;
+    width: 15vh;
+    border: 1px solid;
+    margin: auto;
+    border-radius: 30px;
+    background-image: url("images/calvinicon.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#player_pic2 {
+    height: 15vh;
+    width: 15vh;
+    border: 1px solid;
+    margin: auto;
+    border-radius: 30px;
+    background-image: url("images/hobbesicon.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 #player1 {
     background-size: cover;
