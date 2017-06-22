@@ -1,6 +1,7 @@
 var game = null;
 
 $(document).ready(function(){
+    start_modal();
     game = new gameConstructor($('#grid_board'));
     $(".dropdown-content a").click(function() {
         if ($(this).hasClass('med')){
@@ -166,6 +167,10 @@ var playerFactory = function(symbol, element){
 
 function modal_display() {
     $("#myModal").modal();
+}
+
+function start_modal() {
+    $("#game_start_modal").modal();
 }
 
 function reset_game() {
