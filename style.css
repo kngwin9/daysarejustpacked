@@ -21,6 +21,7 @@ body {
 
 #title_container > h1 {
     font-size: 7vmin;
+    display:inline-block;
 }
 
 #title {
@@ -53,8 +54,8 @@ body {
     display: inline-block;
 }
 #grid_board {
-    height: 70vh;
-    margin: auto;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -200,4 +201,24 @@ a:hover{
 
 .dropbtn a {
     color: #ffffff;
+}
+
+@media only screen and (min-width: 400px) {
+    .wrapper {
+        flex-wrap: wrap;
+    }
+    #container{
+        height: 67vh;
+        width: 96vw;
+        margin: auto;
+        margin-bottom: 2%;
+        order: 0;
+    }
+    #grid_board {
+        height: 100%;
+        width: 100%;
+    }
+    .players, #player_pic1, #player_pic2 {
+        order: 2;
+    }
 }
