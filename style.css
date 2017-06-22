@@ -76,7 +76,6 @@ body {
     font-size: 8vh;
     font-family: calvin_and_hobbes;
     border-radius: 30px;
-
 }
 #player_pic1 {
     height: 15vh;
@@ -198,4 +197,8 @@ a:hover{
 
 .dropbtn a {
     color: #ffffff;
+}
+
+@media only screen and (min-width: 667px)  {
+    
 }
