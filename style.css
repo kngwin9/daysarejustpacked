@@ -1,8 +1,6 @@
 body {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
     margin: auto;
     background-image: url("images/calvinandhobbesback1.jpg");
     background-size: contain;
@@ -12,13 +10,17 @@ body {
 }
 #title_container {
     height: 12vh;
-    width: 100%;
+    width: 100vw;
     background-color: deepskyblue;
     font-family: calvin_and_hobbes;
-    font-size: 60px;
+    font-size: 8vmin;
     text-align: center;
     letter-spacing: 8px;
     color: black;
+}
+
+#title_container > h1 {
+    font-size: 7vmin;
 }
 
 #title {
@@ -28,6 +30,12 @@ body {
     color: black;
     display: inline-block;
 }
+
+.wrapper {
+    display: flex;
+    margin-top: 3%;
+}
+
 #container {
     background-color: #989898;
     height: 70vh;
@@ -140,7 +148,8 @@ a:hover{
     background-color: #333;
     color: white;
     padding: 16px;
-    font-size: 12px;
+    font-size: 2vmin;
+    vertical-align: middle;
     border: none;
     cursor: pointer;
     font-family: calvin_and_hobbes;

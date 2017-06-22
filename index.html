@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -9,49 +10,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Tic Tac Toe Your Face!</title>
 </head>
+
 <body>
-<div id = "title_container">Days Are Just Packed
-    <!--<div style="float:left;">-->
+    <div id="title_container">
+        <h1>Days Are Just Packed</h1>
+        <!--<div style="float:left;">-->
         <!--<button class="dropbtn"><a href="about.html">About Us</a></button>-->
+        <!--</div>-->
+        <div class="dropdown">
+            <button class="dropbtn">Settings</button>
+            <div class="dropdown-content mode">
+                <a class="ez" id="ez_btn" href="#">Easy</a>
+                <a class="med" id="med_btn" href="#">Medium</a>
+                <a class="hard" id="hard_btn" href="#">Hard</a>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="players" id="player1">X</div>
+        <div id="player_pic1"></div>
+        <div id="container">
+            <div id="grid_board"></div>
+        </div>
+        <div id="player_pic2"></div>
+        <div class="players" id="player2">O</div>
+    </div>
+
+    <!--<div id = "chat_box">Chat Box-->
+    <!--<div id = "chat_log"></div>-->
+    <!--<div id = "chat_text"></div>-->
     <!--</div>-->
-    <div class="dropdown" style="float:right;">
-        <button class="dropbtn">Settings</button>
-        <div class="dropdown-content mode">
-            <a class="ez" id = "ez_btn" href="#">Easy</a>
-            <a class="med" id = "med_btn" href="#">Medium</a>
-            <a class="hard" id = "hard_btn" href="#">Hard</a>
-        </div>
-    </div>
-</div>
-<div class = "players" id = "player1">X</div>
-<div id="player_pic1"></div>
-<div id = "container">
-    <div id = "grid_board"></div>
-</div>
-<div id="player_pic2"></div>
-<div class = "players" id = "player2">O</div>
-<!--<div id = "chat_box">Chat Box-->
-<!--<div id = "chat_log"></div>-->
-<!--<div id = "chat_text"></div>-->
-<!--</div>-->
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h1 class="modal-title">Good Game!</h1>
-            </div>
-            <div class="modal-body">
-                <p><h2 id = "modal_outcome_win">You Win!</h2></p>
-                <p><h2 id = "modal_outcome_draw">Draw :(</h2></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Play Again!</button>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h1 class="modal-title">Good Game!</h1>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <h2 id="modal_outcome_win">You Win!</h2>
+                    </p>
+                    <p>
+                        <h2 id="modal_outcome_draw">Draw :(</h2>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Play Again!</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>
