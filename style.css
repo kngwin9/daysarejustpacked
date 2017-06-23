@@ -41,6 +41,7 @@ body {
     background-color: #989898;
     height: 70vh;
     width: 70vw;
+    margin: auto;
 }
 #chat_box {
     background-color: lightgoldenrodyellow;
@@ -203,22 +204,41 @@ a:hover{
     color: #ffffff;
 }
 
-@media only screen and (min-width: 400px) {
+/*@media only screen and (min-width: 768px) {
+    .wrapper {
+        flex-wrap: nowrap;
+    }
+    #container{
+        height: 70vh;
+        width: 70vw;
+        margin: 0;
+        order: 0
+    }
+    .players, #player_pic1, #player_pic2 {
+        order: 0;
+    }
+    .dropbtn {
+        font-size: 2vmin;
+        margin-bottom: 5%;
+    }
+}*/
+
+@media only screen and (max-width: 500px){
     .wrapper {
         flex-wrap: wrap;
     }
     #container{
         height: 67vh;
         width: 96vw;
-        margin: auto;
-        margin-bottom: 2%;
         order: 0;
-    }
-    #grid_board {
-        height: 100%;
-        width: 100%;
+        margin-bottom: 2%;
     }
     .players, #player_pic1, #player_pic2 {
         order: 2;
+    }
+    .dropbtn {
+        font-size: 3vmin;
+        margin-bottom: 4vmin;
+
     }
 }
