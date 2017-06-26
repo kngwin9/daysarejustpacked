@@ -166,7 +166,7 @@ var playerFactory = function(symbol, element){
 };
 
 function modal_display() {
-    $("#myModal").modal();
+    $("#game_end_modal").modal();
 }
 
 function start_modal() {
