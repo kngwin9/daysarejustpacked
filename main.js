@@ -2,6 +2,7 @@ var game = null;
 
 $(document).ready(function(){
     start_modal();
+    settings_menu();
     game = new gameConstructor($('#grid_board'));
     $(".dropdown-content a").click(function() {
         if ($(this).hasClass('med')){
@@ -175,4 +176,13 @@ function start_modal() {
 
 function reset_game() {
     location.reload();
+}
+
+function settings_menu() {
+    $(".dropbtn").on('click', function () {
+        $('.dropdown-content').show();
+    });
+    $(".dropdown-content").on('click', function () {
+        $('.dropdown-content').hide();
+    });
 }
