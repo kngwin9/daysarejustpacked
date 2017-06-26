@@ -73,7 +73,7 @@ function gameConstructor(main){
         this.combinations.push(diagonalLeftCombo);
     };
     this.createPlayers = function () {
-        var player1 = new playerFactory('X', $('#player1'));
+        var player1 = new playerFactory('x', $('#player1'));
         var player2 = new playerFactory('O', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);

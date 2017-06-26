@@ -43,17 +43,6 @@ body {
     width: 70vw;
     margin: auto;
 }
-#chat_box {
-    background-color: lightgoldenrodyellow;
-    height: 10vh;
-    width: 100vw;
-    font-family: calvin_and_hobbes;
-    font-size: 30px;
-    text-align: center;
-    padding: 2%;
-    border-radius: 30px;
-    display: inline-block;
-}
 #grid_board {
     height: 100%;
     width: 100%;
