@@ -40,7 +40,7 @@ body {
 #container {
     background-color: #989898;
     height: 70vh;
-    width: 70vw;
+    width: 45vw;
     margin: auto;
 }
 #grid_board {
@@ -58,6 +58,7 @@ body {
     font-size: 10vh;
     font-family: calvin_and_hobbes;
     display: block;
+    line-height: 125px;
 }
 .ez{
     height:30%;
@@ -76,7 +77,6 @@ body {
     width: 100%;
     text-align: center;
     font-size: 3vh;
-
 }
 
 #player_container {
@@ -202,12 +202,13 @@ a:hover{
 @media only screen and (max-width: 500px){
     .wrapper {
         flex-wrap: wrap;
+        margin-top: 8%;
     }
     #container{
-        height: 67vh;
+        height: 60vh;
         width: 96vw;
         order: 0;
-        margin-bottom: 2%;
+        margin-bottom: 4%;
     }
     .players, #player_pic1, #player_pic2 {
         order: 2;
@@ -216,4 +217,58 @@ a:hover{
         font-size: 3vmin;
         margin-bottom: 4vmin;
     }
+}
+
+@media only screen and (max-height: 600px){
+    .wrapper {
+        flex-wrap: wrap;
+    }
+
+    .dropbtn {
+        font-size: 14px;
+    }
+    #title_container {
+        height: 81px;
+        width: 100%;
+        background-color: deepskyblue;
+        font-family: calvin_and_hobbes;
+        text-align: center;
+        letter-spacing: 8px;
+        color: black;
+    }
+    #title_container > h1 {
+        font-size: 40px;
+        display:inline-block;
+    }
+    #player_pic1, #player_pic2 {
+        height: 99.5px;
+        width: 99.5px;
+    }
+    .players {
+        height: 70px;
+        width: 70px;
+        font-size: 50px;
+        text-align: center;
+    }
+    #container {
+        background-color: #989898;
+        height: 475px;
+        width: 475px;
+        margin: auto;
+    }
+    .grid {
+        margin: auto;
+        line-height: 150px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 75px;
+        font-family: calvin_and_hobbes;
+    }
+    #ez_btn, #med_btn, #hard_btn {
+        height: 50%;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+
 }
