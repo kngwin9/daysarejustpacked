@@ -258,10 +258,10 @@ a:hover{
     }
     .grid {
         margin: auto;
-        line-height: 150px;
+        line-height: 115px;
         box-sizing: border-box;
         text-align: center;
-        font-size: 75px;
+        font-size: 70px;
         font-family: calvin_and_hobbes;
     }
     #ez_btn, #med_btn, #hard_btn {
