@@ -74,7 +74,7 @@ function gameConstructor(main){
     };
     this.createPlayers = function () {
         var player1 = new playerFactory('x', $('#player1'));
-        var player2 = new playerFactory('O', $('#player2'));
+        var player2 = new playerFactory('o', $('#player2'));
         this.players.push(player1);
         this.players.push(player2);
         this.players = this.players.sort(function () {
