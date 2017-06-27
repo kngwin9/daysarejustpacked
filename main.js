@@ -108,7 +108,8 @@ function gameConstructor(main){
                 }
                 if (count === this.rowLength) {
                     $('#modal_outcome_draw').hide();
-                    $('#modal_outcome_win').show();
+                    var winner = $('<h2>').text(this.players[this.currentPlayer].symbol + " wins!");
+                    $('#modal_outcome_win').append(winner).show();
                     modal_display();
                     return;
                 }
